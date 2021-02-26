@@ -17,6 +17,13 @@ public class UI_FimDeJogo : MonoBehaviour
         {
             message.text = "Você Perdeu!!";
         }
+
+        string[] stats = PlayerPrefs.GetString("Leaderboard_Breakout").Split(',');
+
+        if (stats.Length > 2 && gm.pontos > int.Parse(stats[1]))
+        {
+            message.text += "\nNova maior pontuação!";
+        }
     }
 
     public void Voltar()

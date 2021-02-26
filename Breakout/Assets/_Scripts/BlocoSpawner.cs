@@ -19,7 +19,7 @@ public class BlocoSpawner : MonoBehaviour
         if (gm.gameState == GameManager.GameState.GAME)
         {
             for (int i = 0; i < 12; i++)
-            { 
+            {
                 for (int j = 0; j < 4; j++)
                 {
                     Vector3 posicao = new Vector3(-9 + 1.55f * i, 4 - 0.55f * j);
@@ -31,7 +31,7 @@ public class BlocoSpawner : MonoBehaviour
 
     void Update()
     {
-        if (transform.childCount <= 0)
+        if (transform.childCount <= 0 && gm.gameState == GameManager.GameState.GAME)
         {
             gm.ChangeState(GameManager.GameState.ENDGAME);
         }
