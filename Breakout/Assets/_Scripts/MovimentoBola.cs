@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
- 
+
 public class MovimentoBola : MonoBehaviour
 {
     [Range(1, 15)]
@@ -65,7 +65,9 @@ public class MovimentoBola : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            float dirX = Random.Range(-5.0f, 5.0f);
+            Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+
+            float dirX = (-playerPosition.x + transform.position.x) * 3;
             float dirY = Random.Range(1.0f, 5.0f);
 
             direcao = new Vector3(dirX, dirY).normalized;
