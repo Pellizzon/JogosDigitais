@@ -30,15 +30,19 @@ public class MovimentoBola : MonoBehaviour
 
         Vector2 posicaoVP = Camera.main.WorldToViewportPoint(transform.position);
 
-        if (posicaoVP.x < 0 || posicaoVP.x > 1)
+        if (posicaoVP.x <= 0)
         {
-            direcao = new Vector3(-direcao.x, direcao.y);
+            direcao = new Vector3(Mathf.Abs(direcao.x), direcao.y);
         }
-        if (posicaoVP.y > 1)
+        else if (posicaoVP.x >= 1)
         {
-            direcao = new Vector3(direcao.x, -direcao.y);
+            direcao = new Vector3(-Mathf.Abs(direcao.x), direcao.y);
         }
-        if (posicaoVP.y < 0)
+        if (posicaoVP.y >= 1)
+        {
+            direcao = new Vector3(direcao.x, -Mathf.Abs(direcao.y));
+        }
+        else if (posicaoVP.y <= 0)
         {
             Reset();
         }
