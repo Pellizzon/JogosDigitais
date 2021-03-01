@@ -9,3 +9,6 @@ Descrição: primeiro contato com Unity, objetivo era desenvolver um jogo semelh
 - https://soundimage.org/wp-content/uploads/2020/08/Happy-Trancin.mp3 
 
 Demais referências para códigos ou imagens utilizadas se encontram nos respectivos scripts, em /Assets/_Scripts
+
+Assets: 
+https://jamiecross.itch.io/breakout-brick-breaker-game-tile-set-free
