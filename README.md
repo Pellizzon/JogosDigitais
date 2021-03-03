@@ -1,4 +1,4 @@
-# JogosDigitais
+# Jogos Digitais
 
 ## Repositório para hospedar projetos da disciplina Jogos Digitais 
 
