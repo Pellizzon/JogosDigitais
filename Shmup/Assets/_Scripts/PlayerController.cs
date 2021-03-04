@@ -6,19 +6,32 @@ public class PlayerController : SteerableBehaviour, IShooter, IDamageable
 {
 
     Animator animator;
+    private int lifes;
     private void Start()
     {
         animator = GetComponent<Animator>();
+        lifes = 10;
     }
 
+    public GameObject bullet;
+    public Transform weapon01;
+    private float shootDelay = 0.5f;
+    private float _lattShootTimestamp = 0.0f;
+
+    public AudioClip shootSFX;
     public void Shoot()
     {
-        throw new System.NotImplementedException();
+        if (Time.time - _lattShootTimestamp < shootDelay) return;
+
+        _lattShootTimestamp = Time.time;
+        Instantiate(bullet, weapon01.transform.position, Quaternion.identity);
+        AudioManager.PlaySFX(shootSFX);
     }
 
     public void TakeDamage()
     {
-        throw new System.NotImplementedException();
+        lifes--;
+        if (lifes <= 0) Die();
     }
 
     public void Die()
@@ -39,6 +52,11 @@ public class PlayerController : SteerableBehaviour, IShooter, IDamageable
         {
             animator.SetFloat("Velocity", 0.0f);
         }
+
+        if (Input.GetAxisRaw("Fire1") != 0)
+        {
+            Shoot();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -46,7 +64,7 @@ public class PlayerController : SteerableBehaviour, IShooter, IDamageable
         if (collision.CompareTag("Enemy"))
         {
             Destroy(collision.gameObject);
-            // TakeDamage();
+            TakeDamage();
         }
     }
 }

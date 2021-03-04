@@ -10,9 +10,12 @@ public class EnemyController : SteerableBehaviour, IShooter, IDamageable
         throw new System.NotImplementedException();
     }
 
+    public int lifes = 2;
+
     public void TakeDamage()
     {
-        throw new System.NotImplementedException();
+        lifes--;
+        if (lifes <= 0) Die();
     }
 
     public void Die()
@@ -30,6 +33,5 @@ public class EnemyController : SteerableBehaviour, IShooter, IDamageable
         float y = Mathf.Cos(angle);
 
         Thrust(x, y);
-       
     }
 }
