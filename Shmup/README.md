@@ -12,3 +12,5 @@ Audience sound:
 
 Primary fire player:
     - https://www.fesliyanstudios.com/play-mp3/5462
+
+Space BG: https://opengameart.org/content/space-background-1
