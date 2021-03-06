@@ -6,11 +6,18 @@ public class PlayerController : SteerableBehaviour, IShooter, IDamageable
 {
 
     Animator animator;
-    private int lifes;
+    public int lifes;
+    GameManager gm;
+
+    private Vector2 screenBounds;
+    private float objHeight;
     private void Start()
     {
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        objHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y;
+
         animator = GetComponent<Animator>();
-        lifes = 10;
+        gm = GameManager.GetInstance();
     }
 
     public GameObject bullet;
@@ -30,20 +37,31 @@ public class PlayerController : SteerableBehaviour, IShooter, IDamageable
 
     public void TakeDamage()
     {
-        lifes--;
-        if (lifes <= 0) Die();
+        gm.lifes--;
+        if (gm.lifes <= 0) Die();
     }
 
     public void Die()
     {
+        if (gm.lifes <= 0 && gm.gameState == GameManager.GameState.GAME)
+        {
+            gm.ChangeState(GameManager.GameState.ENDGAME);
+        }
         Destroy(gameObject);
     }
 
     void FixedUpdate()
     {
+        if (gm.gameState != GameManager.GameState.GAME) return;
+
         float yInput = Input.GetAxis("Vertical");
         float xInput = Input.GetAxis("Horizontal");
         Thrust(xInput, yInput);
+
+        Vector3 pos = transform.position;
+        pos.y = Mathf.Clamp(pos.y, objHeight - screenBounds.y, screenBounds.y - objHeight);
+        transform.position = pos;
+
         if (yInput != 0 || xInput != 0)
         {
             animator.SetFloat("Velocity", 1.0f);
@@ -56,6 +74,11 @@ public class PlayerController : SteerableBehaviour, IShooter, IDamageable
         if (Input.GetAxisRaw("Fire1") != 0)
         {
             Shoot();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && gm.gameState == GameManager.GameState.GAME)
+        {
+            gm.ChangeState(GameManager.GameState.PAUSE);
         }
     }
 

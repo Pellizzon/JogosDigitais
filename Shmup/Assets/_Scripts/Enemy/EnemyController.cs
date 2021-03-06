@@ -1,13 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyController : SteerableBehaviour, IShooter, IDamageable
 {
 
+    public GameObject shot;
     public void Shoot()
     {
-        throw new System.NotImplementedException();
+        Instantiate(shot, transform.position, Quaternion.identity);
     }
 
     public int lifes = 2;

@@ -173,6 +173,9 @@ GameObject:
   - component: {fileID: 2699269547800252170}
   - component: {fileID: 2699269547800252171}
   - component: {fileID: 2699269547800252168}
+  - component: {fileID: -1682677490777061242}
+  - component: {fileID: 6669896642348550025}
+  - component: {fileID: 1240412063832597172}
   m_Layer: 0
   m_Name: purpleEnemy
   m_TagString: Enemy
@@ -187,14 +190,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2699269547800252173}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2699269547528296923}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!212 &2699269547800252174
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -355,6 +358,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   td: {fileID: 11400000, guid: be4d12c3782303b4f99aba8eea6dc039, type: 2}
+--- !u!114 &-1682677490777061242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2699269547800252173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 462343d7dc28c934e848f8bf6bdf64b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  td: {fileID: 11400000, guid: be4d12c3782303b4f99aba8eea6dc039, type: 2}
+  shot: {fileID: 5203676269322013375, guid: c453561f93a9ccf429025190bc3e4a12, type: 3}
+  lifes: 5
+--- !u!114 &6669896642348550025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2699269547800252173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 979d96bbde739474a8ecbc95fdd9e943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1240412063832597172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2699269547800252173}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 960120050dbb02642b289fe59890941f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootDelay: 1
 --- !u!1 &2699269547833898102
 GameObject:
   m_ObjectHideFlags: 0

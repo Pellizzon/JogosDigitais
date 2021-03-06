@@ -13,4 +13,9 @@ Audience sound:
 Primary fire player:
     - https://www.fesliyanstudios.com/play-mp3/5462
 
-Space BG: https://opengameart.org/content/space-background-1
+Space BG: 
+    - Artwork created by Luis Zuno (@ansimuz)
+    - https://opengameart.org/content/space-background-3
+
+Purple and Green ship: https://craftpix.net/freebies/free-pixel-art-enemy-spaceship-2d-sprites/
+Asteroid: https://opengameart.org/content/a-layered-asteroid-rock

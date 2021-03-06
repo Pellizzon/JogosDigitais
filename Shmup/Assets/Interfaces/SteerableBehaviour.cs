@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
@@ -17,12 +15,10 @@ public abstract class SteerableBehaviour : MonoBehaviour
         if (td == null)
         {
             throw new MissingReferenceException($"ShipData not set in {gameObject.name}'s Inspector");
-            
         }
         rb = GetComponent<Rigidbody2D>();
     }
-
-    protected virtual void Thrust(float x, float y)
+    public virtual void Thrust(float x, float y)
     {
         rb.MovePosition(rb.position + new Vector2(x * td.thrustIntensity.x, y * td.thrustIntensity.y) * Time.fixedDeltaTime);
     }
