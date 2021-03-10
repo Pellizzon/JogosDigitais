@@ -3,12 +3,14 @@ public class StatePatrolForWaypoints : State
 {
     // Transform[] waypoints;
     Rigidbody2D rb;
-
+    GameManager gm;
     public override void Awake()
     {
         base.Awake();
         // Configure a transição para outro estado aqui.
         rb = GetComponent<Rigidbody2D>();
+
+        gm = GameManager.GetInstance();
     }
 
     // public void Start()
@@ -19,7 +21,10 @@ public class StatePatrolForWaypoints : State
 
     public override void Update()
     {
-        Vector3 playerPos = GameObject.FindWithTag("Player").transform.position;
+        if (gm.gameState != GameManager.GameState.GAME) return;
+
+        if (GameObject.FindWithTag("Player")){
+            Vector3 playerPos = GameObject.FindWithTag("Player").transform.position;
 
         if (Vector3.Distance(transform.position, playerPos) > .1f)
         {
@@ -31,6 +36,6 @@ public class StatePatrolForWaypoints : State
         {
             playerPos = GameObject.FindWithTag("Player").transform.position;
         }
+        }
     }
-
 }

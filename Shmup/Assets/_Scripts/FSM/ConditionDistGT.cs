@@ -15,6 +15,11 @@ public class ConditionDistGT : Condition
 
     public override bool Test()
     {
-        return Vector2.Distance(agent.position, target.position) >= minDist;
+        try {
+            return Vector2.Distance(agent.position, target.position) >= minDist;
+        } catch {
+            return false;
+        }
+       
     }
 }

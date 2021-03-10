@@ -47,7 +47,7 @@ public class PlayerController : SteerableBehaviour, IShooter, IDamageable
         {
             gm.ChangeState(GameManager.GameState.ENDGAME);
         }
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     void FixedUpdate()

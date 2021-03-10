@@ -12,7 +12,7 @@ public class StatePatrol : State
         Transition ToAttack = new Transition();
         ToAttack.condition = new ConditionDistLT(transform,
             GameObject.FindWithTag("Player").transform,
-            5.0f);
+            15.0f);
         ToAttack.target = GetComponent<StateAttack>();
         // Adicionamos a transição em nossa lista de transições
         transitions.Add(ToAttack);

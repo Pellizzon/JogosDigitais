@@ -3,6 +3,8 @@ public class StateAttack : State
 {
     SteerableBehaviour steerable;
     IShooter shooter;
+    GameManager gm;
+    
     public override void Awake()
     {
         base.Awake();
@@ -10,7 +12,7 @@ public class StateAttack : State
         Transition ToPatrol = new Transition();
         ToPatrol.condition = new ConditionDistGT(transform,
             GameObject.FindWithTag("Player").transform,
-            5.0f);
+            15.0f);
         ToPatrol.target = GetComponent<StatePatrol>();
         // Adicionamos a transição em nossa lista de transições
         transitions.Add(ToPatrol);
@@ -21,6 +23,8 @@ public class StateAttack : State
         {
             throw new MissingComponentException("This GameObject doesn't implement IShooter");
         }
+
+        gm = GameManager.GetInstance(); 
     }
 
     public float shootDelay = 1.0f;
@@ -32,6 +36,7 @@ public class StateAttack : State
 
         if (Time.time - _lastShootTimestamp < shootDelay) return;
         _lastShootTimestamp = Time.time;
+        if (gm.gameState != GameManager.GameState.GAME) return;
         shooter.Shoot();
     }
 }

@@ -6,12 +6,17 @@ public class ActiveOnSomeStates : MonoBehaviour
     public GameManager.GameState[] activeStates;
     GameManager gm;
 
-    void Start()
+    void Awake()
     {
         GameManager.changeStateDelegate += UpdateVisibility;
         gm = GameManager.GetInstance();
         UpdateVisibility();
     }
+
+    private void OnDisable() {
+        GameManager.changeStateDelegate -= UpdateVisibility;
+    }
+
 
     void UpdateVisibility()
     {
