@@ -7,7 +7,7 @@ public class PlayerController : SteerableBehaviour, IShooter, IDamageable
     private float maxLifes;
     public HealthBar healthBar;
     GameManager gm;
-
+    private float Timer;
     private Vector2 screenBounds;
     private float objHeight;
     private void Start()
@@ -20,6 +20,7 @@ public class PlayerController : SteerableBehaviour, IShooter, IDamageable
 
         maxLifes = 10.0f;
         healthBar.SetSize(gm.lifes / maxLifes);
+        Timer = Time.time + 1;
     }
 
     public GameObject bullet;
@@ -78,6 +79,24 @@ public class PlayerController : SteerableBehaviour, IShooter, IDamageable
         {
             Shoot();
         }
+
+        // a cada segundo o player ganha pontuacao
+
+
+        if (xInput > 0)
+        {
+            if (Timer < Time.time)
+            {
+                gm.score += 1;
+                Timer = Time.time + 1;
+            }
+        }
+        //se o jogador fica indo pra traz, vai ser penalizado
+        else if (xInput < 0 && Timer + 1.5f < Time.time)
+        {
+            gm.score -= 1;
+        }
+
 
         if (Input.GetKeyDown(KeyCode.Escape) && gm.gameState == GameManager.GameState.GAME)
         {

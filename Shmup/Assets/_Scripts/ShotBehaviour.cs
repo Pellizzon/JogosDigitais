@@ -6,7 +6,10 @@ public class ShotBehaviour : SteerableBehaviour
     {
         Thrust(1, 0);
     }
-
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player")) return;

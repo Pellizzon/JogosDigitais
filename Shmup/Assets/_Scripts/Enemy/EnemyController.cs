@@ -30,7 +30,7 @@ public class EnemyController : SteerableBehaviour, IShooter, IDamageable
 
     public void Die()
     {
-        gm.score += 20;
+        gm.score += 100;
         Destroy(gameObject);
     }
 

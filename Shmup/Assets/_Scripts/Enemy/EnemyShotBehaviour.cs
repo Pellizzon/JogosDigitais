@@ -35,6 +35,7 @@ public class EnemyShotBehaviour : SteerableBehaviour
     private void OnBecameInvisible()
     {
         gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
 }
