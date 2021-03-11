@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_Vidas : MonoBehaviour
+public class UI_Score : MonoBehaviour
 {
     Text textComp;
-
     GameManager gm;
     void Start()
     {
@@ -14,6 +13,6 @@ public class UI_Vidas : MonoBehaviour
 
     void Update()
     {
-        textComp.text = $"Lifes: {gm.lifes}";
+        textComp.text = $"Score: {gm.score}";
     }
 }

@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : SteerableBehaviour, IShooter, IDamageable
 {
 
     Animator animator;
-    public int lifes;
+    private float maxLifes;
+    public HealthBar healthBar;
     GameManager gm;
 
     private Vector2 screenBounds;
@@ -18,6 +17,9 @@ public class PlayerController : SteerableBehaviour, IShooter, IDamageable
 
         animator = GetComponent<Animator>();
         gm = GameManager.GetInstance();
+
+        maxLifes = 10.0f;
+        healthBar.SetSize(gm.lifes / maxLifes);
     }
 
     public GameObject bullet;
@@ -38,6 +40,7 @@ public class PlayerController : SteerableBehaviour, IShooter, IDamageable
     public void TakeDamage()
     {
         gm.lifes--;
+        healthBar.SetSize(gm.lifes / maxLifes);
         if (gm.lifes <= 0) Die();
     }
 

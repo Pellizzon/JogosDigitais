@@ -1,26 +1,26 @@
 ﻿using UnityEngine;
-
 public class VolantBehaviour : SteerableBehaviour, IDamageable
-
 {
-    public int lifes = 2;
-
+    GameManager gm;
+    public HealthBar healthBar;
+    public float lifes = 2f;
+    private float maxLifes = 2f;
+    private void Start()
+    {
+        gm = GameManager.GetInstance();
+        healthBar.SetSize(lifes / maxLifes);
+        healthBar.SetColor(Color.cyan);
+    }
     public void TakeDamage()
     {
         lifes--;
+        healthBar.SetSize(lifes / maxLifes);
         if (lifes <= 0) Die();
     }
 
     public void Die()
     {
+        gm.score += 20;
         Destroy(gameObject);
     }
-
-    // float angle = 0;
-    // private void FixedUpdate()
-    // {
-    //     angle += 0.1f;
-    //     if (angle > 2.0f * Mathf.PI) angle = 0.0f;
-    //     Thrust(0, Mathf.Cos(angle));
-    // }
 }

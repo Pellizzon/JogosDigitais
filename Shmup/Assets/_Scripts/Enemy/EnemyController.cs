@@ -3,22 +3,34 @@
 public class EnemyController : SteerableBehaviour, IShooter, IDamageable
 {
 
+    GameManager gm;
+    public HealthBar healthBar;
+    public float lifes = 5f;
+    private float maxLifes = 5f;
+    private void Start()
+    {
+        gm = GameManager.GetInstance();
+        healthBar.SetSize(lifes / maxLifes);
+        healthBar.SetColor(Color.red);
+    }
+
     public GameObject shot;
     public void Shoot()
     {
         Instantiate(shot, transform.position, Quaternion.identity);
     }
 
-    public int lifes = 2;
-
     public void TakeDamage()
     {
         lifes--;
+        gm.score += 2;
+        healthBar.SetSize(lifes / maxLifes);
         if (lifes <= 0) Die();
     }
 
     public void Die()
     {
+        gm.score += 20;
         Destroy(gameObject);
     }
 
