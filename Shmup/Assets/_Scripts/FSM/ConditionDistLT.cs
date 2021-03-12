@@ -15,6 +15,13 @@ public class ConditionDistLT : Condition
 
     public override bool Test()
     {
-        return Vector2.Distance(agent.position, target.position) <= maxDist;
+        try
+        {
+            return Vector2.Distance(agent.position, target.position) <= maxDist;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }

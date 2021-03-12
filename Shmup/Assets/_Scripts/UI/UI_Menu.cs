@@ -9,7 +9,7 @@ public class UI_Menu : MonoBehaviour
         gm = GameManager.GetInstance();
     }
 
-    public void Start()
+    public void StartGame()
     {
         gm.ChangeState(GameManager.GameState.GAME);
         SceneManager.LoadScene(0);

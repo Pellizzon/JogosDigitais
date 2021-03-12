@@ -47,11 +47,11 @@ public class PlayerController : SteerableBehaviour, IShooter, IDamageable
 
     public void Die()
     {
+        gameObject.SetActive(false);
         if (gm.lifes <= 0 && gm.gameState == GameManager.GameState.GAME)
         {
             gm.ChangeState(GameManager.GameState.ENDGAME);
         }
-        gameObject.SetActive(false);
     }
 
     void FixedUpdate()

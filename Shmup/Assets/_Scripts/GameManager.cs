@@ -1,4 +1,5 @@
-﻿public class GameManager
+﻿using UnityEngine;
+public class GameManager
 {
     public enum GameState { MENU, GAME, PAUSE, ENDGAME };
     public GameState gameState { get; private set; }
@@ -19,7 +20,7 @@
     {
         lifes = 10;
         score = 0;
-        gameState = GameState.GAME;
+        gameState = GameState.MENU;
     }
 
     public delegate void ChangeStateDelegate();
@@ -29,7 +30,14 @@
     {
         if (nextState == GameState.GAME) Reset();
         gameState = nextState;
-        changeStateDelegate();
+        try
+        {
+            changeStateDelegate();
+        }
+        catch
+        {
+            Debug.LogWarning("changeStateDelegate null");
+        }
     }
 
     private void Reset()

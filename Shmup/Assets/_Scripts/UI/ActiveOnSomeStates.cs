@@ -13,10 +13,10 @@ public class ActiveOnSomeStates : MonoBehaviour
         UpdateVisibility();
     }
 
-    private void OnDisable() {
+    private void OnDisable()
+    {
         GameManager.changeStateDelegate -= UpdateVisibility;
     }
-
 
     void UpdateVisibility()
     {
