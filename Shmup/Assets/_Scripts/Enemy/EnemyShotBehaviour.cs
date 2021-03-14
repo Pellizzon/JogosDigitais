@@ -6,7 +6,7 @@ public class EnemyShotBehaviour : SteerableBehaviour
 {
 
     private Vector3 direction;
-
+    GameManager gm;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy")) return;
@@ -21,14 +21,14 @@ public class EnemyShotBehaviour : SteerableBehaviour
 
     void Start()
     {
+        gm = GameManager.GetInstance();
         Vector3 posPlayer = GameObject.FindWithTag("Player").transform.position;
         direction = (posPlayer - transform.position).normalized;
     }
 
     void Update()
     {
-        // Vector3 posPlayer = GameObject.FindWithTag("Player").transform.position;
-        // direction = (posPlayer - transform.position).normalized;
+        if (gm.gameState != GameManager.GameState.GAME) return;
         Thrust(direction.x, direction.y);
     }
 

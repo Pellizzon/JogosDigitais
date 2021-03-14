@@ -361,6 +361,7 @@ MonoBehaviour:
   healthBar: {fileID: 234916210802054186}
   lifes: 5
   shot: {fileID: 5203676269322013375, guid: c453561f93a9ccf429025190bc3e4a12, type: 3}
+  deathSFX: {fileID: 8300000, guid: a5aa84affb124e5428d312dff598dfa6, type: 3}
 --- !u!114 &6669896642348550025
 MonoBehaviour:
   m_ObjectHideFlags: 0

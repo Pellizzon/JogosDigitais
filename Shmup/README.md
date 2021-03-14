@@ -19,3 +19,5 @@ Space BG:
 
 Purple and Green ship: https://craftpix.net/freebies/free-pixel-art-enemy-spaceship-2d-sprites/
 Asteroid: https://opengameart.org/content/a-layered-asteroid-rock
+
+Explosions sounds: https://mixkit.co/free-sound-effects/explosion/ 

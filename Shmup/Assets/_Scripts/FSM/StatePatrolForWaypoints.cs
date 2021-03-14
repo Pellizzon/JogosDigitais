@@ -23,19 +23,20 @@ public class StatePatrolForWaypoints : State
     {
         if (gm.gameState != GameManager.GameState.GAME) return;
 
-        if (GameObject.FindWithTag("Player")){
+        if (GameObject.FindWithTag("Player"))
+        {
             Vector3 playerPos = GameObject.FindWithTag("Player").transform.position;
 
-        if (Vector3.Distance(transform.position, playerPos) > .1f)
-        {
-            Vector3 direction = playerPos - transform.position;
-            direction.Normalize();
-            rb.MovePosition(rb.position + new Vector2(direction.x, direction.y) * Time.fixedDeltaTime);
-        }
-        else
-        {
-            playerPos = GameObject.FindWithTag("Player").transform.position;
-        }
+            if (Vector3.Distance(transform.position, playerPos) > .1f)
+            {
+                Vector3 direction = playerPos - transform.position;
+                direction.Normalize();
+                rb.MovePosition(rb.position + new Vector2(direction.x, direction.y) * Time.fixedDeltaTime);
+            }
+            else
+            {
+                playerPos = GameObject.FindWithTag("Player").transform.position;
+            }
         }
     }
 }

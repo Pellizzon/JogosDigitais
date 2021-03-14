@@ -17,6 +17,7 @@ public class EnemyController : SteerableBehaviour, IShooter, IDamageable
     public GameObject shot;
     public void Shoot()
     {
+        if (gm.gameState != GameManager.GameState.GAME) return;
         Instantiate(shot, transform.position, Quaternion.identity);
     }
 
@@ -28,9 +29,11 @@ public class EnemyController : SteerableBehaviour, IShooter, IDamageable
         if (lifes <= 0) Die();
     }
 
+    public AudioClip deathSFX;
     public void Die()
     {
         gm.score += 100;
+        AudioManager.PlaySFX(deathSFX);
         Destroy(gameObject);
     }
 
@@ -38,11 +41,17 @@ public class EnemyController : SteerableBehaviour, IShooter, IDamageable
 
     private void FixedUpdate()
     {
+        if (gm.gameState != GameManager.GameState.GAME) return;
         angle += 0.1f;
         Mathf.Clamp(angle, 0.0f, 2.0f * Mathf.PI);
         float x = Mathf.Sin(angle);
         float y = Mathf.Cos(angle);
 
         Thrust(x, y);
+
+        if (transform.position.x < (GameObject.FindWithTag("Player").transform.position.x - 20))
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -18,9 +18,11 @@ public class VolantBehaviour : SteerableBehaviour, IDamageable
         if (lifes <= 0) Die();
     }
 
+    public AudioClip deathSFX;
     public void Die()
     {
         gm.score += 20;
+        AudioManager.PlaySFX(deathSFX);
         Destroy(gameObject);
     }
 }

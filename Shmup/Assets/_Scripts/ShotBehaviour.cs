@@ -2,8 +2,16 @@
 
 public class ShotBehaviour : SteerableBehaviour
 {
+
+    GameManager gm;
+
+    private void Start()
+    {
+        gm = GameManager.GetInstance();
+    }
     private void Update()
     {
+        if (gm.gameState != GameManager.GameState.GAME) return;
         Thrust(1, 0);
     }
     private void OnBecameInvisible()

@@ -22,27 +22,29 @@ public class EnemyPool : MonoBehaviour
 
         GameObject player = GameObject.FindWithTag("Player");
 
-        Vector3 playerPos = player.transform.position;
-        playerPos.y = Random.Range(-4.0f, 4.0f);
-        Vector3 playerDirection = player.transform.right;
-        Quaternion playerRotation = player.transform.rotation;
-
-        float spawnDistance = 20;
-
-        Vector3 spawnPos = playerPos + spawnDistance * playerDirection;
-        if (Timer < Time.time)
+        if (player)
         {
-            if (Random.Range(0.0f, 1.0f) < 0.7f)
+            Vector3 playerPos = player.transform.position;
+            playerPos.y = Random.Range(-4.0f, 4.0f);
+            Vector3 playerDirection = player.transform.right;
+            Quaternion playerRotation = player.transform.rotation;
+
+            float spawnDistance = 20;
+
+            Vector3 spawnPos = playerPos + spawnDistance * playerDirection;
+            if (Timer < Time.time)
             {
-                Instantiate(purpleEnemy, spawnPos, playerRotation);
-                Timer = Time.time + 2;
-            }
-            else
-            {
-                Instantiate(asteroid, spawnPos, playerRotation);
-                Timer = Time.time + 3;
+                if (Random.Range(0.0f, 1.0f) < 0.7f)
+                {
+                    Instantiate(purpleEnemy, spawnPos, playerRotation);
+                    Timer = Time.time + 2;
+                }
+                else
+                {
+                    Instantiate(asteroid, spawnPos, playerRotation);
+                    Timer = Time.time + 3;
+                }
             }
         }
-
     }
 }

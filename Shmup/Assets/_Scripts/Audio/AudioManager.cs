@@ -10,7 +10,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private AudioClip music;
     private static AudioManager _instance;
-
     void Awake()
     {
         _instance = this;

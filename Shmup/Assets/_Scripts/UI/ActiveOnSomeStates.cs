@@ -13,7 +13,7 @@ public class ActiveOnSomeStates : MonoBehaviour
         UpdateVisibility();
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         GameManager.changeStateDelegate -= UpdateVisibility;
     }

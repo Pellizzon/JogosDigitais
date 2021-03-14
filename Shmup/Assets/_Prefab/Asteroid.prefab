@@ -127,7 +127,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -148,6 +148,7 @@ MonoBehaviour:
   td: {fileID: 11400000, guid: be4d12c3782303b4f99aba8eea6dc039, type: 2}
   healthBar: {fileID: 3801753364159816495}
   lifes: 2
+  deathSFX: {fileID: 8300000, guid: a80ee0468c563e4458f72a96a970bff6, type: 3}
 --- !u!114 &-307753478560688498
 MonoBehaviour:
   m_ObjectHideFlags: 0
