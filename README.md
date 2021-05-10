@@ -6,6 +6,8 @@
 
 Outros projetos:
 
-Microgame: https://github.com/Pellizzon/microgame
+[Microgame](https://github.com/Pellizzon/microgame)
 
-Boss2D: SuperMatBoy https://github.com/thiagoverardo/SuperMatBoy
+[Boss2D: SuperMatBoy](https://github.com/thiagoverardo/SuperMatBoy)
+
+[Waterwatch](https://github.com/thiagoverardo/Waterwatch)
